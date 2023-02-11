@@ -1,0 +1,18 @@
+[
+    {
+        "id": 0,
+        "coordinates": {
+            "lat": 47.123456,
+            "lon": 73.123456
+        },
+        "validated": false
+    },
+    {
+        "id": 1,
+        "coordinates": {
+            "lat": 78.901234,
+            "lon": 56.789012
+        },
+        "validated": true
+    }
+]
