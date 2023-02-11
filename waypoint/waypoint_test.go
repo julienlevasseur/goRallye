@@ -55,5 +55,5 @@ func TestValidate(t *testing.T) {
 		},
 	)
 
-	assert.Equal(t, true, wp.Validated)
+	assert.True(t, wp.Validated)
 }
