@@ -186,3 +186,11 @@ func ParseWaypoints(path string) ([]Waypoint, error) {
 
 	return waypoints, nil
 }
+
+func HeadingToWaypoint(bearing, heading float64) float64 {
+	return bearing - heading
+}
+
+func DistanceToWaypoint(position, waypoint haversine.Coord) (mi, km float64) {
+	return haversine.Distance(position, waypoint)
+}
