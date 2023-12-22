@@ -15,21 +15,13 @@ func Round(number float64, precision uint) float64 {
 	return math.Round(number*ratio) / ratio
 }
 
-// Truncate float with the given precision
-// with number = 33.999 and precision = 0.1, Round returns 33.9
-// with number = 33.999 and precision = 0.01, Round returns 33.99
-// with number = 33.999 and precision = 0.001, Round returns 33.999
-func Truncate(number float64, precision float64) float64 {
-	bf := big.NewFloat(0).SetPrec(1000).SetFloat64(number)
-	bu := big.NewFloat(0).SetPrec(1000).SetFloat64(precision)
-
-	bf.Quo(bf, bu)
-
-	// Truncate:
-	i := big.NewInt(0)
-	bf.Int(i)
-	bf.SetInt(i)
-
-	number, _ = bf.Mul(bf, bu).Float64()
-	return number
+// truncate return the given float64 value with a precision decimal
+// It does not round it to .1, example:
+// with num = 1.123 & precision = 1, Truncate returns: 1.1
+// with num = 33.99 & precision = 2, Truncate returns: 33.99
+// with num = 33.99  & precision = 1, Truncate returns: 33.9
+func truncate(num float64, precision int) float64 {
+	output := math.Pow(10, float64(precision))
+	return float64(round(num*output)) / output
 }
+
