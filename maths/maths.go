@@ -2,7 +2,6 @@ package maths
 
 import (
 	"math"
-	"math/big"
 )
 
 // Round float with the given precision
@@ -10,9 +9,8 @@ import (
 // with number = 33.99 and precision = 2, Round returns 33.99
 // with number = 33.999 and precision = 2, Round returns 33.99
 // with number = 33.99 and precision = 3, Round returns 33.999
-func Round(number float64, precision uint) float64 {
-	ratio := math.Pow(10, float64(precision))
-	return math.Round(number*ratio) / ratio
+func round(k float64) int {
+  return int(k + math.Copysign(0.001, k))
 }
 
 // truncate return the given float64 value with a precision decimal
